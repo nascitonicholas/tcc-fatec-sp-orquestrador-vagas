@@ -1,6 +1,6 @@
 package br.com.fatec.sp.tcc.orquestradorvagas.v1.facade;
 
-import br.com.fatec.sp.tcc.orquestradorvagas.v1.controller.response.VagasResponse;
+import br.com.fatec.sp.tcc.orquestradorvagas.v1.controller.response.VagaResponse;
 import br.com.fatec.sp.tcc.orquestradorvagas.v1.integracao.orquestradorBd.response.OrquestradorBdResponse;
 import br.com.fatec.sp.tcc.orquestradorvagas.v1.integracao.orquestradorBd.service.OrquestradorBdService;
 import br.com.fatec.sp.tcc.orquestradorvagas.v1.mapper.VagasMapper;
@@ -20,7 +20,7 @@ public class VagasFacade {
 
     private VagasMapper mapper = Mappers.getMapper(VagasMapper.class);
 
-    public List<VagasResponse> get() {
+    public List<VagaResponse> get() {
         try {
             List<OrquestradorBdResponse.VagasBd> listaVagas = orquestradorBdService.getListaVagas();
             return mapper.mapListaVagasBdResponseToListaVagasResponse(listaVagas);

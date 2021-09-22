@@ -58,6 +58,12 @@ public class OrquestradorBdResponse {
         private String observacoes;
         @JsonProperty("usuario")
         private Usuario usuarioResponsavel;
+        @JsonProperty("curso")
+        private Curso curso;
+        @JsonProperty("tipo_vaga")
+        private TipoVaga tipoVaga;
+        @JsonProperty("endereco")
+        private Endereco endereco;
 
     }
 
@@ -88,6 +94,68 @@ public class OrquestradorBdResponse {
         @JsonProperty("data_ultima_alteracao")
         private String dataUltimaAlteracao;
 
+    }
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class Curso {
+
+        @JsonProperty("id")
+        private Long id;
+        @JsonProperty("nome")
+        private String nome;
+        @JsonProperty("data_criacao")
+        private String dataCriacao;
+        @JsonProperty("data_ultima_alteracao")
+        private String dataUltimaAlteracao;
+
+    }
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class TipoVaga {
+
+        @JsonProperty("id_tipo_vaga")
+        private Long id;
+        @JsonProperty("tipo")
+        private String tipo;
+        @JsonProperty("data_criacao")
+        private String dataCriacao;
+        @JsonProperty("data_ultima_alteracao")
+        private String dataUltimaAlteracao;
+
+    }
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class Endereco {
+
+        @JsonProperty("id")
+        private Long id;
+        @JsonProperty("logradouro")
+        private String logradouro;
+        @JsonProperty("numero")
+        private String numero;
+        @JsonProperty("complemento")
+        private String complemento;
+        @JsonProperty("bairro")
+        private String bairro;
+        @JsonProperty("municipio")
+        private String municipio;
+        @JsonProperty("estado")
+        private String estado;
+        @JsonProperty("cep")
+        private String cep;
+        @JsonProperty("data_criacao")
+        private String dataCriacao;
+        @JsonProperty("data_ultima_alteracao")
+        private String dataUltimaAlteracao;
     }
 
 }
