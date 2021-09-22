@@ -1,4 +1,4 @@
-package br.com.fatec.sp.tcc.v1.orquestradorvagas;
+package br.com.fatec.sp.tcc.orquestradorvagas.v1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
