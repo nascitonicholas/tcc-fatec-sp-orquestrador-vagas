@@ -73,8 +73,8 @@ public class OrquestradorBdResponse {
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Usuario {
 
-        @JsonProperty("id")
-        private Long id;
+        @JsonProperty("nrMatricula")
+        private Long nrMatricula;
         @JsonProperty("nome")
         private String nome;
         @JsonProperty("email")
@@ -138,6 +138,8 @@ public class OrquestradorBdResponse {
 
         @JsonProperty("id")
         private Long id;
+        @JsonProperty("tipo_endereco")
+        private String tipoEndereco;
         @JsonProperty("logradouro")
         private String logradouro;
         @JsonProperty("numero")
@@ -149,13 +151,26 @@ public class OrquestradorBdResponse {
         @JsonProperty("municipio")
         private String municipio;
         @JsonProperty("estado")
-        private String estado;
+        private Estados estado;
         @JsonProperty("cep")
         private String cep;
         @JsonProperty("data_criacao")
         private String dataCriacao;
         @JsonProperty("data_ultima_alteracao")
         private String dataUltimaAlteracao;
+    }
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class Estados {
+
+        @JsonProperty("id")
+        private Long id;
+        @JsonProperty("nome")
+        private String nome;
+
     }
 
 }

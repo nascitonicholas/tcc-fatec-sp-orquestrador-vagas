@@ -2,12 +2,13 @@ package br.com.fatec.sp.tcc.orquestradorvagas.v1.mapper;
 
 import br.com.fatec.sp.tcc.orquestradorvagas.v1.controller.response.VagaResponse;
 import br.com.fatec.sp.tcc.orquestradorvagas.v1.integracao.orquestradorBd.response.OrquestradorBdResponse;
+import br.com.fatec.sp.tcc.orquestradorvagas.v1.utils.Utils;
 import org.mapstruct.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Mapper
+@Mapper(imports = {Utils.class})
 public interface VagasMapper {
 
     @Mappings({
@@ -20,6 +21,7 @@ public interface VagasMapper {
             @Mapping(target = "telefone", source = "vaga.usuarioResponsavel.telefone"),
             @Mapping(target = "email", source = "vaga.usuarioResponsavel.email"),
             @Mapping(target = "observacao", source = "vaga.observacoes"),
+            @Mapping(target = "enderecoCompleto", expression = "java(Utils.montaEndereco(vaga.getEndereco()))"),
     })
     VagaResponse mapVagaBdToVagaResponse (OrquestradorBdResponse.VagasBd vaga);
 
@@ -30,14 +32,6 @@ public interface VagasMapper {
             response.add(mapVagaBdToVagaResponse(vaga));
         });
         return response;
-    }
-
-    @AfterMapping
-    @Named("afterMapVagaBdToVagaResponse")
-    default void afterMapVagaBdToVagaResponse(@MappingTarget VagaResponse vagaResponse, OrquestradorBdResponse.VagasBd vaga) {
-        String endereco = vaga.getEndereco().getLogradouro() + ", " + vaga.getEndereco().getNumero() + " - "
-                        + vaga.getEndereco().getMunicipio() + ", " + vaga.getEndereco().getEstado();
-        vagaResponse.setEnderecoCompleto(endereco);
     }
 
 }
